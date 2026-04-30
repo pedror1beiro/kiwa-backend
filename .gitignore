@@ -1,0 +1,7 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Outputs gerados dinamicamente (Exercicio 2)
+output.json
