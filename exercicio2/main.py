@@ -55,12 +55,13 @@ def normalizar_timestamp(ts: str) -> datetime:
 
 def produtor(caminho: str):
     with open(caminho, 'r', encoding='utf-8') as f:
-        linhas = [l.strip() for l in f if l.strip()]
-
-    for linha in linhas:
-        time.sleep(random.uniform(0.1, 0.5))
-        print(f"[produtor] {linha[:70]}")
-        fila.put(linha)
+        for linha in f:
+            linha = linha.strip()
+            if not linha:
+                continue
+            time.sleep(random.uniform(0.1, 0.5))
+            print(f"[produtor] {linha[:60]}")
+            fila.put(linha)
 
     fila.put(DONE)
 
